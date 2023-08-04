@@ -14,8 +14,14 @@ export class HeroesComponent {
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
-    this.heroes = this.heroService.getHeroes();
+    this.getHeroes();
   }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
+  }
+
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
